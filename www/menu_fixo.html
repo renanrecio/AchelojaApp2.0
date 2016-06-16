@@ -1,10 +1,10 @@
 
 		
-<img src="" width="100%" style=" position:fixed; background-color: #0054a6; top:0em; left:0%; height: 1.2em;" /> 
+<img src="" width="100%" style=" position:fixed; background-color: #0054a6; top:0em; left:0%; height: 1.7em;" /> 
 
-<span style="position: fixed; font-size: 1em; font-weight:bold; top:0em; right:2%; color: white;"> AcheLoja </span> 
+<span style="position: fixed; font-size: 1.3em; font-weight:bold; top:0.1em; right:2%; color: white;"> AcheLoja </span> 
  
- <a href="editar_cadastro.html"><div style="width: 100%;" ><img id ="foto_perfil_menu" src="fotos/entrar.png" style="position: fixed; left: 3%; top:0.1em; width:1em; height:1em;"/> <span style="position: fixed; left: 10%; top:0em; color: white; font-weight: bold; ">Nome</span></div></a>
+ <a href="editar_cadastro.html"><div style="width: 100%;" ><img id ="foto_perfil_menu" src="fotos/entrar.png" style="position: fixed; left: 3%; top:0em; width:1.7em; height:1.7em;"/> <span id="nome_usuario" style="position: fixed; font-size: 1.1em; left: 13%; top:0.2em; color: white; font-weight: bold; "></span></div></a>
 
 	
 
@@ -15,7 +15,23 @@
 
 <img src="fotos/estrela.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; right:32%; width:2.8em; height:2.8em;" /> 
 
-<img src="fotos/pessoa.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; right:10%; width:2.8em; height:2.8em;" /> 
+<img src="fotos/pessoa.png" onclick="sair()" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; right:10%; width:2.8em; height:2.8em;" /> 
 
 
-		
+<script>
+
+document.getElementById("foto_perfil_menu").src = localStorage.foto_usuario;
+document.getElementById("nome_usuario").innerHTML = localStorage.nome_usuario;
+
+function sair(){
+
+localStorage.nome_usuario = "";
+localStorage.id_usuario = "";
+localStorage.foto_usuario = "";
+
+window.location.href="index.html"
+	
+
+
+}
+</script>		
