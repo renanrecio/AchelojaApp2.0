@@ -70,12 +70,7 @@ function setDefault(){
 		</script>
 		
 		
-<div id="div_produtos" style="position: absolute; top:10%; left:0%; width:100%;" >	
-
-
-		
-		
-</div>	
+<div id="div_produtos" style="position: absolute; top:10%; left:0%; width:100%;" ></div>	
 	
 <div id="menu">
 
@@ -195,6 +190,9 @@ function setDefault(){
 				document.getElementById("contador").value = str.substring((pos_ct+3), pos_t);
 				document.getElementById("top").value = str.substring((pos_t+2), pos_l);
 				document.getElementById("left").value = str.substring((pos_l+2), str.length);
+				
+				if( (document.getElementById("div_produtos").innerHTML) == '') document.getElementById("msg_sem_lojas").style.visibility = "visible";
+
 				
 				
 				
@@ -321,6 +319,14 @@ startRequest_mais_produtos();
  <a href="home.html"><img src="fotos/casa_selecionada.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; left:10%; width:2.8em; height:2.8em;" /> </a>
 
 
+ <div id="msg_sem_lojas" style="visibility: hidden; position: absolute; top:10%; width:90%; left:5%; height:75%; background-color: black; opacity:0.70; filter:alpha(opacity=70);">
+ 
+	<p style="color: white; font-size:1em;">Você ainda <b>não</b> está </br> <b>SEGUINDO</b> nenhuma Loja. </br></br>Clique no botão </br><a href="busca.html"><img src="fotos/lupa.png" width="100%"  style=" background-color: #0054a6; width:2.8em; height:2.8em;" /> </a></br>
+	para achar Produtos, Lojas e assim <b style="color:#0054a9;">SEGUIR SUAS LOJAS FAVORITAS</b>. </br> </br> Aqui aparecerão as <b style="color:#0054a9;">novidades</b> em <b style="color:#0054a9;">PRODUTOS</b> das suas <b style="color:#0054a9;">Lojas Favoritas</b> que estará <b>seguindo</b>!!</p>
+ 
+ 
+ </div>
+ 
 </body>
 	
 	

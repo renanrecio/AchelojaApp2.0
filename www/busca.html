@@ -24,22 +24,22 @@
 
 ::-webkit-input-placeholder {
    color: gray;
-   font: 50px verdana, arial, sans-serif;
+   font: 1em verdana, arial, sans-serif;
 }
 
 :-moz-placeholder {
    color: gray;
-   font: 50px verdana, arial, sans-serif;
+   font: 1em verdana, arial, sans-serif;
 }
 
 ::-moz-placeholder {
    color: gray;  
-   font: 50px verdana, arial, sans-serif;
+   font: 1em verdana, arial, sans-serif;
 }
 
 :-ms-input-placeholder {  
    color: gray;  
-   font: 50px verdana, arial, sans-serif;
+   font: 1em verdana, arial, sans-serif;
 }
 
 </style>
@@ -181,7 +181,7 @@ function fechar(){
 
 
 	
-<div id="div_produtos" onmouseover="diminuir_mapa();" style="position: absolute; top:0em; width:100%; left: 0%; " >	
+<div id="div_produtos"  onmouseover="diminuir_mapa();" style="position: absolute; top:0em; width:100%; left: 0%; " >	
 
 
 		
@@ -342,6 +342,8 @@ $(function () {
 					  startRequest_mais_produtos();
 						// add your custom function here. i.e what you want to do.
 			 }
+			 desaparecer_busca_produto(); 
+			 desaparecer_busca_loja();
 		});
 });
 </script>
@@ -356,39 +358,6 @@ $(function () {
  
  
 
-<table id="div_fundo_filtro" onclick="fechar()" style="visibility: hidden; position:fixed; width: 100%; height: 100%; background-color: black; opacity:0.70; filter:alpha(opacity=70);" >
-</table>
-		
-<div id="div_filtro" style="border-radius: 10px; visibility: hidden; position: absolute; top:10%; width:80%; left: 10%; height:70em; background-color: #f2f2f2; text-align:center;" >	
-	<form action="lojas.php" method="POST">
-		<p style="color:#0054a6; font-weight: bold; font-size: 3em;">Filtros</p>
-
-		
-
-		<p style="color:#0054a6; font-weight: bold; text-align: left; font-size: 3em;">Categorias:</p>	
-
-
-	
-			
-			<p style="color:#0054a6; font-weight: bold; text-align: left; font-size: 3em;">AcheLojas perto do:</p>
-
-			<input id="cep_bairro" name="cep_bairro" type="text" value="" style="font-size: 3em; font-weight: bold; width:90%"  placeholder="CEP ou Bairro" />
-
-
-			<p style="color:#0054a6; font-weight: bold; text-align: left; font-size: 3em;">Cidade:</p>
-
-			<input id="cidade" name="cidade" type="text" style="font-size: 3em; font-weight: bold; width:90%" value=""  placeholder="Cidade" />
-
-			</br></br>
-			
-
-			<input type="submit" style="  height:2em; width:6em; left: 30%; font-weight: bold; color:white; background-color: #0070a1; font-size:3em; cursor: pointer;" Value="Filtrar"/>
-	</form>
-	
-	<p style="position: absolute; top:-1em; right:1%; color: red; cursor: pointer; font-size: 2em;" onclick="fechar()"> Fechar </p>
-</div>
-	
-
  
  
 <img id="img_carregando_produtos" src="fotos/carregando_produtos.gif" style="border-radius:5px; border: 0.5px dashed; visibility: hidden; width:20%; position: absolute; left:40%;" />
@@ -401,6 +370,138 @@ $(function () {
 startRequest_mais_produtos();
 </script> 
  
+
+ 
+ <!-- Filtros -->
+<script>
+ 
+ var busca_loja = 0;
+ 
+function aparecer_busca_loja(){
+	if(busca_loja == 0){
+		document.getElementById("busca_loja").style.visibility = "visible";
+		busca_loja = 1;
+	}else{
+		document.getElementById("busca_loja").style.visibility = "hidden";
+		busca_loja = 0;
+	}
+
+} 
+
+
+function desaparecer_busca_loja(){
+	
+	document.getElementById("busca_loja").style.visibility = "hidden";
+	busca_loja = 0;
+} 
+
+var busca_produto = 0;
+ 
+function aparecer_busca_produto(){
+	if(busca_produto == 0){
+		document.getElementById("busca_produto").style.visibility = "visible";
+		busca_produto = 1;
+	}else{
+		document.getElementById("busca_produto").style.visibility = "hidden";
+		busca_produto = 0;
+	}
+
+} 
+
+function desaparecer_busca_produto(){
+	
+	document.getElementById("busca_produto").style.visibility = "hidden";
+	busca_produto = 0;
+
+} 
+ 
+ 
+ function filtrar(){
+ 
+	 localStorage.cep_bairro = document.getElementById("cep_bairro").value;
+	 localStorage.cidade = document.getElementById("cidade").value;
+	 
+	 window.location.href="busca.html";
+ 
+ }
+ 
+ 
+ </script>
+ <script>
+ 
+ function buscar_loja(){
+ 
+	localStorage.nome_loja = document.getElementById("nome_da_loja_buscar").value;
+	 
+	window.location.href="buscar_lojas.html";
+ 
+ }
+ 
+ </script>
+ 
+<div onclick="desaparecer_busca_loja(); aparecer_busca_produto()">
+
+	<img  src="" width="55%" style=" position:fixed; background-color: #0054a6; top:1.7em; left:0%; height: 1.7em; opacity:0.90; filter:alpha(opacity=90);" /> 
+	<img  src="fotos/lupa.png" width="100%"  style=" position: fixed; top:1.8em; left:1%;  width:1.5em; height:1.5em; " /><span id="achar_produto" name="achar_produto" style="position: fixed; font-size: 1em; font-weight:bold; top:2em; left:1.2em; width:50%; color: white;"> Achar Produto </span> 
+</div>
+
+	
+<div onclick="aparecer_busca_loja(); desaparecer_busca_produto()" >
+	<img  src="" width="45%" style=" position:fixed; background-color: #0054a6; top:1.7em; left:55%; height: 1.7em; opacity:0.90; filter:alpha(opacity=90);" /> 
+ 
+	<img  src="fotos/lupa.png" width="100%"  style=" position: fixed; top:1.8em; left:55%; width:1.5em; height:1.5em;" /><span  id="achar_loja" name="achar_loja" style="position: fixed; font-size: 1em; font-weight:bold; top:2em; right:0%; width:45%; color: white;"> Achar Loja </span> 
+</div>
+ 
+ 
+<div id="busca_loja" style="visibility: hidden;">
+
+
+<img src="" width="100%" style="position:fixed; background-color: #0054a6; top:3.4em; left:0%; height: 9em; opacity:0.90; filter:alpha(opacity=90);" /> 
+ 
+<input type="text" id="nome_da_loja_buscar" name="nome_da_loja_buscar" value="" placeholder="Escreva o Nome da Loja"  style=" position:fixed; font-size:1em; top:5em; left:10%; height: 1em; width: 80%; "/> 
+<input type="button" onclick="buscar_loja()" value="Achar" style=" position:fixed; background-color: #0054a6; top:9em; left:40%; height: 1.5em; width: 20%; color:white;" />
+ 
+</div>
+
+
+<div id="busca_produto" style="visibility: hidden;">
+
+
+<img src="" width="100%" style="position:fixed; background-color: #0054a6; top:3.4em; left:0%; height: 13em; opacity:0.90; filter:alpha(opacity=90);" /> 
+				
+		<p style="position: fixed; top:3.7em; left: 10%; color:white; font-weight: bold; font-size:0.9em;" >Ache perto do:</p>
+		<input id="cep_bairro" name="cep_bairro" type="text" style="position: fixed; top:5.5em; height:1.2em; width:50%; left: 10%; font-weight: bold;font-size:16px; "  onkeypress="return Se_apertar_enter(event)" onclick = "clicar_input();"  placeholder="CEP ou Bairro" />
+		<p style="position: fixed; top:3.7em; left: 60.4%; color:white; font-weight: bold; font-size:0.9em;" >Cidade:</p>
+		<input id="cidade" name="cidade" type="text" style="position: fixed; top:5.5em; height:1.2em; width:30%; left: 60.4%; font-weight: bold; font-size:16px;" Value="São Paulo" onkeypress="return Se_apertar_enter(event)" onclick = "clicar_input();"  placeholder="Cidade" />
+		
+		<p style="position: fixed; top:7.5em; left: 10%; color:white; font-weight: bold; font-size:0.9em;" >Categorias:</p>
+		
+		<div id="categorias_produtos" style="position:fixed; left:10%; top:8.5em; height:60%; width:100%;" >
+		
+		<input style="position:absolute; left:0%; top:3%;" type="checkbox" id="categoria" name="categoria" value=""> <span style="color:white; font-size: 0.8em; position:absolute; left:7%; top:4%;"> Roupas </span>
+		
+		<input style="position:absolute; left:30%; top:3%;" type="checkbox" id="categoria" name="categoria" value=""> <span style="color:white; font-size: 0.8em; position:absolute; left:37%; top:4%;"> Calçados </span>
+
+		<input style="position:absolute; left:56%; top:3%;" type="checkbox" id="categoria" name="categoria" value=""> <span style="color:white; font-size: 0.8em; position:absolute; left:63%; top:4%;"> Acessórios </span>
+
+		<input style="position:absolute; left:0%; top: 12%;" type="checkbox" id="categoria" name="categoria" value=""> <span style="color:white; font-size: 0.8em; position:absolute; left:7%; top:13%;"> Info & Eletro </span>
+		
+		<input style="position:absolute; left:30%; top:12%;" type="checkbox" id="categoria" name="categoria" value=""> <span style="color:white; font-size: 0.8em; position:absolute; left:37%; top:13%;"> Saúde </span>
+
+		<input style="position:absolute; left:56%; top:12%;" type="checkbox" id="categoria" name="categoria" value=""> <span style="color:white; font-size: 0.8em; position:absolute; left:63%; top:13%;"> Outras </span>
+
+	
+		</div>
+		
+		
+		<input onclick="filtrar()" type="submit" style="position: fixed; top:13.5em; height:2em; width:20%; left: 40%; font-weight: bold; color:white; background-color: #0054a6; font-size:1em; cursor: pointer; border-radius: 5px;" Value="Achar"/>
+			
+</div>
+ 
+ 
+ 
+ 
+ <!--FIM dos Filtros -->
  
  <div id="menu">
 
@@ -413,7 +514,8 @@ startRequest_mais_produtos();
       $("#menu").load("menu_fixo.html"); 
     });
 </script> 
-
+  
+ 
  
 </body>
 	

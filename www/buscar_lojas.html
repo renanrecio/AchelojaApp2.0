@@ -40,15 +40,16 @@
 			}
 			}
 
-			function startRequest_lojas_favoritas() {
+			function startRequest_lojas() {
 			createXMLHttpRequest();
 			xmlHttp.onreadystatechange = handleStateChange;
 			
 			
-			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/m/ajax_lojas_favoritas_app.php", true);
+			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/m/ajax_buscar_lojas_app.php", true);
 			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 			
-			xmlHttp.send("id_usuario="+localStorage.id_usuario);
+			xmlHttp.send("nome_loja="+localStorage.nome_loja);
+			
 			
 			}
 
@@ -62,9 +63,8 @@
 				str = xmlHttp.responseText;
 				
 				
-				document.getElementById("div_lojas_favoritas").innerHTML = document.getElementById("div_lojas_favoritas").innerHTML + str;
+				document.getElementById("div_lojas").innerHTML = document.getElementById("div_lojas").innerHTML + str;
 				
-				if( (document.getElementById("div_lojas_favoritas").innerHTML) == '') document.getElementById("msg_sem_lojas").style.visibility = "visible";
 
 				
 			}
@@ -73,7 +73,7 @@
 			
 		
 			
-		startRequest_lojas_favoritas();
+		startRequest_lojas();
 			
 </script>   
 
@@ -81,9 +81,9 @@
 
 <body>
 
-<p style="position:absolute; top:5%; color:#0070a1; font-size:1.1em; width:80%; left:10%; text-decoration:underline; font-weight:bold;"> Lojas Favoritas </p>
+<p style="position:absolute; top:5%; color:#0070a1; font-size:1.1em; width:80%; left:10%; text-decoration:underline; font-weight:bold;"> Lojas </p>
 
-<div id="div_lojas_favoritas" style="position:absolute; width:100%; top:10%; left:0%;"></div>
+<div id="div_lojas" style="position:absolute; width:100%; top:10%; left:0%;"></div>
 
 
 	
@@ -98,6 +98,10 @@
       $("#menu").load("menu_fixo.html"); 
     });
 </script> 
+
+
+
+<a style="text-decoration: none;" href="javascript:window.history.go(-1)"><span style="position:fixed; top:5%; left:0%; font-size:2em; border:dashed gray; border-width: 0px 1px 0px 0px;">⇦</span></a>
 
 
 <script>
@@ -146,14 +150,6 @@
 
 
 
- <div id="msg_sem_lojas" style="visibility: hidden; position: absolute; top:15%; width:90%; left:5%; height:70%; background-color: black; opacity:0.70; filter:alpha(opacity=70);">
- 
-	<p style="color: white; font-size:1em;">Você ainda <b>não</b> está </br> <b>SEGUINDO</b> nenhuma Loja. </br></br>Clique no botão </br><a href="busca.html"><img src="fotos/lupa.png" width="100%"  style=" background-color: #0054a6; width:2.8em; height:2.8em;" /> </a></br>
-	para achar Produtos, Lojas e assim <b style="color:#0054a9;">SEGUIR SUAS LOJAS FAVORITAS</b>. </br> </br> Aqui aparecerão suas <b style="color:#0054a9;">Lojas Favoritas</b> que estará <b>seguindo</b>!!</p>
- 
- 
- </div>
- 
 
 </body>
 </html>
