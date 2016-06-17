@@ -180,13 +180,15 @@ if(nome_usuario_guardado != ''){
 						var pos_id = str.indexOf("#id");
 						var pos_nome = str.indexOf("#nome");
 						var pos_foto = str.indexOf("#foto");
+						var pos_email = str.indexOf("#email"); 
 						
 						
 						//alert(str);
 						
 						localStorage.id_usuario = str.substring((pos_id+3), pos_nome);
 						localStorage.nome_usuario = str.substring((pos_nome+5), pos_foto);
-						localStorage.foto_usuario = str.substring((pos_foto+5), str.length);
+						localStorage.foto_usuario = str.substring((pos_foto+5), pos_email);
+						localStorage.email_usuario = str.substring((pos_email+6), str.length);
 
 						//form[0].submit;
 						window.location.href="home.html";

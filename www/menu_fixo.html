@@ -2,36 +2,35 @@
 		
 <img src="" width="100%" style=" position:fixed; background-color: #0054a6; top:0em; left:0%; height: 1.7em;" /> 
 
-<span style="position: fixed; font-size: 1.3em; font-weight:bold; top:0.1em; right:2%; color: white;"> AcheLoja </span> 
+<span id="acheloja_menu" name="acheloja_menu" style="position: fixed; font-size: 1.3em; font-weight:bold; top:0.1em; right:2%; color: white;"> AcheLoja </span> 
  
- <a href="editar_cadastro.html"><div style="width: 100%;" ><img id ="foto_perfil_menu" src="fotos/entrar.png" style="position: fixed; left: 3%; top:0em; width:1.7em; height:1.7em;"/> <span id="nome_usuario" style="position: fixed; font-size: 1.1em; left: 13%; top:0.2em; color: white; font-weight: bold; "></span></div></a>
+ <a href="pessoal.html"><div style="width: 100%;" ><img id ="foto_perfil_menu" src="fotos/entrar.png" style="position: fixed; left: 3%; top:0em; width:1.7em; height:1.7em;"/> <span id="nome_usuario" style="position: fixed; font-size: 1.1em; left: 13%; top:0.2em; color: white; font-weight: bold; "></span></div></a>
 
 	
 
 <img src="" width="100%" style=" position:fixed; background-color: #0054a6; bottom:-0.5em; left:0%; height: 3.5em;" /> 
 <a href="home.html"><img src="fotos/casa.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; left:10%; width:2.8em; height:2.8em;" /> </a>
 
-<img src="fotos/lupa.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; left:32%; width:2.8em; height:2.8em;" /> 
+<img src="fotos/lupa.png" width="100%"  style=" position:fixed; background-color: #0054a6; bottom:0em; left:32%; width:2.8em; height:2.8em;" /> 
 
-<img src="fotos/estrela.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; right:32%; width:2.8em; height:2.8em;" /> 
+<a href="lojas_favoritas.html"><img src="fotos/estrela.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; right:32%; width:2.8em; height:2.8em;" /> </a>
 
-<img src="fotos/pessoa.png" onclick="sair()" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; right:10%; width:2.8em; height:2.8em;" /> 
+<a href="pessoal.html"><img src="fotos/pessoa.png" width="100%" style=" position:fixed; background-color: #0054a6; bottom:0em; right:10%; width:2.8em; height:2.8em;" /> </a>
 
 
 <script>
 
 document.getElementById("foto_perfil_menu").src = localStorage.foto_usuario;
-document.getElementById("nome_usuario").innerHTML = localStorage.nome_usuario;
 
-function sair(){
+var nome_menu = localStorage.nome_usuario;
 
-localStorage.nome_usuario = "";
-localStorage.id_usuario = "";
-localStorage.foto_usuario = "";
+var pos_espaco = nome_menu.indexOf(" ");
 
-window.location.href="index.html"
-	
-
-
+//definir tamanho do nome
+if(nome_menu.length > 12){
+	nome_menu = nome_menu.substring(0,pos_espaco);
 }
+
+document.getElementById("nome_usuario").innerHTML = nome_menu;
+
 </script>		

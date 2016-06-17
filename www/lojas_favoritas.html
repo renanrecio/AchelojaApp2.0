@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+
+
+<link rel="stylesheet" type="text/css" href="FolhaEstilo.css" media="screen" />
+
+<script language="javascript" type="text/javascript">
+	
+	function chamar_vitrine(nick_site, id_anuncio){
+			
+		//startRequest_clique_loja(id_anuncio);
+		
+		localStorage.nick_site = nick_site;
+		
+		window.location.href="vitrine_virtual.html";
+		
+
+	}
+
+</script>
+	
+<!-- Validação do forumlário -->
+<script type="text/javascript">
+			var xmlHttp;
+			var top_ultimo_prod;
+			var cidade;
+			var cep_bairro;
+			var str;
+
+			function createXMLHttpRequest() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+
+			function startRequest_lojas_favoritas() {
+			createXMLHttpRequest();
+			xmlHttp.onreadystatechange = handleStateChange;
+			
+			
+			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/m/ajax_lojas_favoritas_app.php", true);
+			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			xmlHttp.send("id_usuario="+localStorage.id_usuario);
+			
+			}
+
+			
+			function handleStateChange() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+			//document.getElementById("resultado").innerHTML = xmlHttp.responseText;
+			//document.getElementById("verifica_login").value = xmlHttp.responseText;
+			
+				str = xmlHttp.responseText;
+				
+				
+				document.getElementById("div_lojas_favoritas").innerHTML = document.getElementById("div_lojas_favoritas").innerHTML + str;
+				
+				
+			}
+			}
+			}
+			
+		
+			
+		startRequest_lojas_favoritas();
+			
+</script>   
+
+</head>
+
+<body>
+
+<p style="position:absolute; top:5%; color:#0070a1; font-size:1.1em; width:80%; left:10%; text-decoration:underline; font-weight:bold;"> Lojas Favoritas </p>
+
+<div id="div_lojas_favoritas" style="position:absolute; width:100%; top:10%; left:0%;">
+
+
+</div>
+
+
+	
+<div id="menu">
+
+</div>	
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>	
+<script> 
+    $(function(){
+      $("#menu").load("menu_fixo.html"); 
+    });
+</script> 
+
+
+<script>
+//Conta o clique no produto do anunciante
+			var link_vitrine = "";
+			 
+			function createXMLHttpRequest_clique_loja() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+			
+			
+			function startRequest_clique_loja(id) {
+			createXMLHttpRequest_clique_loja();
+			xmlHttp.onreadystatechange = handleStateChange_clique_loja;
+			
+			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/validar/cliques_ajax.php", true);
+			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			xmlHttp.send("id="+id+"&tipo=clique_produto");
+			
+			
+			
+			
+		
+			}
+
+			
+			function handleStateChange_clique_loja() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+				
+				//Não fazer nada
+				
+				
+			}
+			}
+			}
+		
+
+</script>	
+
+</body>
+</html>
