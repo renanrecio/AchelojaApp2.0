@@ -14,7 +14,16 @@
 <meta name="description" content="Você escolhe o que quer comprar e onde, e o acheloja.com acha o estabelecimento mais próximo de você!">
 
 
-<link rel="stylesheet" type="text/css" href="FolhaEstilo.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="Folha_Estilo.css" media="screen" />
+
+<style>
+body
+{
+	background:url(fotos/fundo2.jpg);
+	background-size: 100%;
+
+}
+</style>
 
 <style>
 
@@ -22,7 +31,7 @@ input,
 textarea {
     opacity: 0.5;
     filter: alpha(opacity=50);
-	border:0.1px dashed;
+	border:0px dashed;
     background-color: #0070a1;
 }
 
@@ -84,21 +93,22 @@ if(nome_usuario_guardado != ''){
 	
 }
 
+			
 </script>	
 
+
 </head>
-     <body style="position: absolute; height:100%; width:96%; top:0%; left:0%;">
+     <body style="position: absolute; width:96%; height:auto; top:0%; left:0%;">
 	
 		<script>
 			var windowHeight = window.innerHeight;
 			document.getElementsByTagName('body')[0].style.height = windowHeight + "px";
 			//alert(windowHeight);
-		</script>
-	
+		</script>	
 	
 		<img style="position:absolute; width:80%; top:15%; left:10%;" src="fotos/logo2.png" />
 		
-		<form action="home.html">
+		<form action="">
 				<input id="email" name="email" type="text" style="position: absolute; top:30%; left:5%; height: 7%; width:90%;  font-size:1.5em; color:white;"   placeholder=" E-mail" />
 				<input id="senha" name="senha" type="password" style="position: absolute; top:40%; left:5%; height: 7%; width:90%;  font-size:1.5em; color:white;"  placeholder=" Senha" />		
 		</form>
@@ -216,6 +226,13 @@ if(nome_usuario_guardado != ''){
 			
 		
 </body>
-	
+
+
+		<!-- repete para garantir o tamanho certo da tela-->
+		<script>
+			var windowHeight = window.innerHeight;
+			document.getElementsByTagName('body')[0].style.height = windowHeight + "px";
+			//alert(windowHeight);
+		</script>	
 	
 </html>
