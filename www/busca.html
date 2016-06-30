@@ -581,26 +581,34 @@ function desaparecer_busca_produto(){
  
  
 <script>	
-	if(localStorage.cidade == ''){
+
+	
+
+	if( (typeof localStorage.cidade === "undefined") || (localStorage.cidade == '') ){
 	
 		document.getElementById("cidade").value = 'São Paulo';
 		
+	
 	}else{
 	
-		document.getElementById("cidade").value = localStorage.cidade;
-		
-	}
+			document.getElementById("cidade").value = localStorage.cidade;
 	
-	if(localStorage.cep_bairro == ''){
+	}
+
+	
+	
+	if( (typeof localStorage.cep_bairro === "undefined") || (localStorage.cep_bairro == '') ){
 	
 		document.getElementById("cep_bairro").value = '';
 		
-	}else{
-	
-		document.getElementById("cep_bairro").value = localStorage.cep_bairro;
 		
+	}else{
+		
+		document.getElementById("cep_bairro").value = localStorage.cep_bairro;
+	
 	}
 		
+
 		
 </script> 
   
