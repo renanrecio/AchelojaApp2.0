@@ -5,7 +5,7 @@
     </head>
     <body>
 
-  <!--/*
+/*
 NOTE:
     This demo uses these plugins:
         Cordova Device Plugin: http://plugins.cordova.io/#/package/org.apache.cordova.device
@@ -15,7 +15,7 @@ NOTE:
         $ cordova plugin add org.apache.cordova.device
         $ cordova plugin add org.apache.cordova.media
 */       
-      <script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"></script>-->
+        <!--<script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"></script>-->
         <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
         <script type="text/javascript" charset="utf-8" src="jquery_1.5.2.min.js"></script>
         <script type="text/javascript" src="PushNotification.js"></script>
@@ -24,11 +24,11 @@ NOTE:
             var pushNotification;
             
             function onDeviceReady() {
-                $("#app-status-ul").append('<li>Device ok. Evento ativado.</li>');
+                $("#app-status-ul").append('<li>deviceready event received</li>');
                 
 				document.addEventListener("backbutton", function(e)
 				{
-                	$("#app-status-ul").append('<li>backbutton clicado.</li>');
+                	$("#app-status-ul").append('<li>backbutton event received</li>');
   					
       				if( $("#home").length > 0)
 					{
@@ -46,18 +46,18 @@ NOTE:
 				try 
 				{ 
                 	pushNotification = window.plugins.pushNotification;
-		      $("#app-status-ul").append('<li>Registrando o ' + device.platform + '</li>');
+		      $("#app-status-ul").append('<li>registering ' + device.platform + '</li>');
                 	if (device.platform == 'android' || device.platform == 'Android' ||
                             device.platform == 'amazon-fireos' ) {
-			pushNotification.register(successHandler, errorHandler, {"senderID":"121897226764","ecb":"onNotification"});		// required!
+			pushNotification.register(successHandler, errorHandler, {"senderID":"661780372179","ecb":"onNotification"});		// required!
 					} else {
                     	pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});	// required!
                 	}
                 }
 				catch(err) 
 				{ 
-					txt="Um erro ocorreu.\n\n"; 
-					txt+="Descrição do erro: " + err.message + "\n\n"; 
+					txt="There was an error on this page.\n\n"; 
+					txt+="Error description: " + err.message + "\n\n"; 
 					alert(txt); 
 				} 
             }
@@ -65,7 +65,7 @@ NOTE:
             // handle APNS notifications for iOS
             function onNotificationAPN(e) {
                 if (e.alert) {
-                     $("#app-status-ul").append('<li>push-notificação: ' + e.alert + '</li>');
+                     $("#app-status-ul").append('<li>push-notification: ' + e.alert + '</li>');
                      // showing an alert also requires the org.apache.cordova.dialogs plugin
                      navigator.notification.alert(e.alert);
                 }
@@ -83,14 +83,14 @@ NOTE:
             
             // handle GCM notifications for Android
             function onNotification(e) {
-                $("#app-status-ul").append('<li>EVENTO -> RECEBIDO:' + e.event + '</li>');
+                $("#app-status-ul").append('<li>EVENT -> RECEIVED:' + e.event + '</li>');
                 
                 switch( e.event )
                 {
                     case 'registered':
 					if ( e.regid.length > 0 )
 					{
-						$("#app-status-ul").append('<li>REGISTRANDO -> REGID: \n\n' + e.regid + "\n\n</li>");
+						$("#app-status-ul").append('<li>REGISTERED -> REGID:' + e.regid + "</li>");
 						// Your GCM push server needs to know the regID before it can push to this device
 						// here is where you might want to send it the regID for later use.
 						console.log("regID = " + e.regid);
@@ -102,7 +102,7 @@ NOTE:
                     	// you might want to play a sound to get the user's attention, throw up a dialog, etc.
                     	if (e.foreground)
                     	{
-							$("#app-status-ul").append('<li>--NOTIFICAÇÕES IN LINE--' + '</li>');
+							$("#app-status-ul").append('<li>--INLINE NOTIFICATION--' + '</li>');
 						      
 						        // on Android soundname is outside the payload. 
 					                // On Amazon FireOS all custom attributes are contained within payload
@@ -116,24 +116,24 @@ NOTE:
 						else
 						{	// otherwise we were launched because the user touched a notification in the notification tray.
 							if (e.coldstart)
-								$("#app-status-ul").append('<li>--NOTIFICAÇÕES RECEBIDAS--' + '</li>');
+								$("#app-status-ul").append('<li>--COLDSTART NOTIFICATION--' + '</li>');
 							else
 							$("#app-status-ul").append('<li>--BACKGROUND NOTIFICATION--' + '</li>');
 						}
 							
-						$("#app-status-ul").append('<li>MENSAGEM -> MSG: ' + e.payload.message + '</li>');
+						$("#app-status-ul").append('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
                         //android only
-						$("#app-status-ul").append('<li>MENSAGEM -> MSGCNT: ' + e.payload.msgcnt + '</li>');
+						$("#app-status-ul").append('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');
                         //amazon-fireos only
-                        $("#app-status-ul").append('<li>MENSAGEM -> TIMESTAMP: ' + e.payload.timeStamp + '</li>');
+                        $("#app-status-ul").append('<li>MESSAGE -> TIMESTAMP: ' + e.payload.timeStamp + '</li>');
                     break;
                     
                     case 'error':
-						$("#app-status-ul").append('<li>ERRO -> MSG:' + e.msg + '</li>');
+						$("#app-status-ul").append('<li>ERROR -> MSG:' + e.msg + '</li>');
                     break;
                     
                     default:
-						$("#app-status-ul").append('<li>EVENTO -> Unknown, an event was received and we do not know what it is</li>');
+						$("#app-status-ul").append('<li>EVENT -> Unknown, an event was received and we do not know what it is</li>');
                     break;
                 }
             }
@@ -145,21 +145,19 @@ NOTE:
             }
 			
             function successHandler (result) {
-                $("#app-status-ul").append('<li>sucesso:'+ result +'</li>');
+                $("#app-status-ul").append('<li>success:'+ result +'</li>');
             }
             
             function errorHandler (error) {
-                $("#app-status-ul").append('<li>erro:'+ error +'</li>');
+                $("#app-status-ul").append('<li>error:'+ error +'</li>');
             }
             
 			document.addEventListener('deviceready', onDeviceReady, true);
 
          </script>
 		<div id="home">
-        <img src="icon.png" width="128" height="128">
-<h2>Teste plugin push </h2>
-        <div id="app-status-div">
-			<ul id="app-status-ul">
+			<div id="app-status-div">
+				<ul id="app-status-ul">
 					<li>Cordova PushNotification Plugin Demo</li>
 				</ul>
 			</div>
