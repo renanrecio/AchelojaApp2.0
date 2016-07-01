@@ -39,7 +39,7 @@
   
   <gap:plugin name="com.phonegap.plugins.pushplugin" version="2.4.0" />
   
-  <icon src="icon.png"/>
+  <icon src="icone.png"/>
   <icon src="www/res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:qualifier="ldpi"/>
   <icon src="www/res/icon/android/icon-48-mdpi.png" gap:platform="android" gap:qualifier="mdpi"/>
   <icon src="www/res/icon/android/icon-72-hdpi.png" gap:platform="android" gap:qualifier="hdpi"/>
