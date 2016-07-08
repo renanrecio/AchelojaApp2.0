@@ -179,7 +179,8 @@ textarea {
         <script type="text/javascript" src="PushNotification.js"></script>
         
         <script type="text/javascript">
-            var pushNotification;
+         
+			   var pushNotification;
             
             function onDeviceReady() {
                // $("#app-status-ul").append('<li>Device ok. Evento ativado.</li>');
@@ -208,7 +209,7 @@ textarea {
                 	if (device.platform == 'android' || device.platform == 'Android' ||
                             device.platform == 'amazon-fireos' ) {
 			pushNotification.register(successHandler, errorHandler, {"senderID":"121897226764","ecb":"onNotification"});		// required!
-					} else {
+					}else {
                     	pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});	// required!
                 	}
                 }
@@ -287,10 +288,11 @@ textarea {
 						}
 						else
 						{	// otherwise we were launched because the user touched a notification in the notification tray.
-							if (e.coldstart)
+							if (e.coldstart){
 								//$("#app-status-ul").append('<li>--NOTIFICAÇÕES RECEBIDAS--' + '</li>');
-							else
+							}else{
 							//$("#app-status-ul").append('<li>--BACKGROUND NOTIFICATION--' + '</li>');
+							}
 						}
 							
 						//$("#app-status-ul").append('<li>MENSAGEM -> MSG: ' + e.payload.message + '</li>');
@@ -300,13 +302,13 @@ textarea {
                         //$("#app-status-ul").append('<li>MENSAGEM -> TIMESTAMP: ' + e.payload.timeStamp + '</li>');
                     break;
                     
-                    case 'error':
+                    //case 'error': 
 						//$("#app-status-ul").append('<li>ERRO -> MSG:' + e.msg + '</li>');
-                    break;
+                    //break;
                     
-                    default:
+                    //default:
 						//$("#app-status-ul").append('<li>EVENTO -> Unknown, an event was received and we do not know what it is</li>');
-                    break;
+                    //break;
                 }
             }
             
@@ -326,11 +328,9 @@ textarea {
             
 			document.addEventListener('deviceready', onDeviceReady, true);
 			
-			
-				alert("Segunda vez reg_id: "+e.regid);
 
-				alert(" Segunda vez  localStorage.id_dispositivo: "+localStorage.id_dispositivo);		
-						
+			alert(" Segunda vez  localStorage.id_dispositivo: "+localStorage.id_dispositivo);		
+					
 
          </script>
 
