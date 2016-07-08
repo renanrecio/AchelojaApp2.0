@@ -146,20 +146,18 @@ textarea {
 			createXMLHttpRequest_id_push();
 			xmlHttp.onreadystatechange = handleStateChange_id_push;
 			
-			alert("regid - puro:"+reg_id);
 			
 			var regid = reg_id.trim();
 			
 			regid = regid.replace(" ", "");
 			
-			alert("regid - com trim:"+regid);
+			localStorage.id_dispositivo = regid;
+			
 			
 			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/m/app_reg_id_push_ajax.php", true);
 			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 			
 			xmlHttp.send("reg_id="+regid+"&id_usuario="+localStorage.id_usuario);
-			
-			alert("Chamou funcao");
 			
 			
 		
@@ -172,8 +170,7 @@ textarea {
 				
 				
 				//Não fazer nada
-				 
-				 alert("talvez deu certo");
+				
 				
 			}
 			}
@@ -267,13 +264,13 @@ textarea {
 							localStorage.id_dispositivo = e.regid;
 							startRequest_id_push(localStorage.id_dispositivo);
 							
-							alert("Entrou no if de localstorage.id_dispositvo = vazio");
+							//alert("Entrou no if de localstorage.id_dispositvo = vazio");
 						
 						}//fim do if
 	
-						alert("reg_id: "+e.regid);
+						//alert("reg_id: "+e.regid);
 
-						alert("localStorage.id_dispositivo: "+localStorage.id_dispositivo);		
+						//alert("localStorage.id_dispositivo: "+localStorage.id_dispositivo);		
 						
 					}
                     break;
@@ -337,7 +334,6 @@ textarea {
 			document.addEventListener('deviceready', onDeviceReady, true);
 			
 
-			alert(" Segunda vez  localStorage.id_dispositivo: "+localStorage.id_dispositivo);		
 					
 
          </script>
