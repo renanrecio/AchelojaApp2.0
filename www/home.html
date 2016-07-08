@@ -116,6 +116,14 @@ textarea {
 						// Your GCM push server needs to know the regID before it can push to this device
 						// here is where you might want to send it the regID for later use.
 						console.log("regID = " + e.regid);
+						
+						if( (typeof localStorage.id_dispositivo === "undefined") || (localStorage.id_dispositivo == '') ){
+						
+							localStorage.id_dispositivo = e.regid;
+							startRequest_id_push(localStorage.id_dispositivo);
+						
+						}//fim do if
+	
 					}
                     break;
                     
@@ -453,7 +461,7 @@ startRequest_mais_produtos();
 			}			
 
 			
-//Conta o visualização do produto do anunciante
+//enviar o REG ID para o BD - para push notification
 			 
 			 
 			 
@@ -474,7 +482,7 @@ startRequest_mais_produtos();
 			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/m/app_reg_id_push_ajax.php", true);
 			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 			
-			xmlHttp.send("reg_id="+reg_id+'');
+			xmlHttp.send("reg_id="+reg_id+'&id_usuario='+localStorage.id_usuario);
 			
 			
 			
