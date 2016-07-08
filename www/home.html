@@ -146,10 +146,18 @@ textarea {
 			createXMLHttpRequest_id_push();
 			xmlHttp.onreadystatechange = handleStateChange_id_push;
 			
+			alert("regid - puro:"+reg_id);
+			
+			var regid = reg_id.trim();
+			
+			regid = regid.replace(" ", "");
+			
+			alert("regid - com trim:"+regid);
+			
 			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/m/app_reg_id_push_ajax.php", true);
 			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 			
-			xmlHttp.send("reg_id="+reg_id+'&id_usuario='+localStorage.id_usuario);
+			xmlHttp.send("reg_id="+regid+"&id_usuario="+localStorage.id_usuario);
 			
 			alert("Chamou funcao");
 			
