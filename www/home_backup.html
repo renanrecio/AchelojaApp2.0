@@ -16,8 +16,6 @@
 
 <link rel="stylesheet" type="text/css" href="Folha_Estilo.css" media="screen" />
 
-
-
 <style>
 
 input,
@@ -39,140 +37,6 @@ textarea {
 }
 
 </style>
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-
-
-<script>
-//Conta o clique no produto do anunciante
-			var xmlHttp;
-			var link_vitrine = "";
-			 
-			function createXMLHttpRequest_clique_produtos() {
-			if (window.ActiveXObject) {
-			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
-			}
-			else if (window.XMLHttpRequest) {
-			xmlHttp = new XMLHttpRequest();
-			}
-			}
-			
-			
-			function startRequest_clique_produtos(id) {
-			createXMLHttpRequest_clique_produtos();
-			xmlHttp.onreadystatechange = handleStateChange_clique_produtos;
-			
-			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/validar/cliques_ajax.php", true);
-			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-			
-			xmlHttp.send("id="+id+"&tipo=clique_produto");
-			
-			
-			
-			
-		
-			}
-
-			
-			function handleStateChange_clique_produtos() {
-			if(xmlHttp.readyState == 4) {
-			if(xmlHttp.status == 200) {
-				
-				//Não fazer nada
-				
-				
-			}
-			}
-			}
-
-//Conta o visualização do produto do anunciante
-			 
-			 
-			 
-			function createXMLHttpRequest_visualizacao_produtos() {
-			if (window.ActiveXObject) {
-			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
-			}
-			else if (window.XMLHttpRequest) {
-			xmlHttp = new XMLHttpRequest();
-			}
-			}
-			
-			
-			function startRequest_visualizacao_produtos(id) {
-			createXMLHttpRequest_visualizacao_produtos();
-			xmlHttp.onreadystatechange = handleStateChange_visualizacao_produtos;
-			
-			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/validar/cliques_ajax.php", true);
-			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-			
-			xmlHttp.send("id="+id+"&tipo=visualizacao_produto");
-			
-			
-			
-			
-		
-			}
-
-			
-			function handleStateChange_visualizacao_produtos() {
-			if(xmlHttp.readyState == 4) {
-			if(xmlHttp.status == 200) {
-				
-				
-				//Não fazer nada
-				 
-				
-			}
-			}
-			}			
-
-			
-//enviar o REG ID para o BD - para push notification
-			 
-			 
-			 
-			function createXMLHttpRequest_id_push() {
-			if (window.ActiveXObject) {
-			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
-			}
-			else if (window.XMLHttpRequest) {
-			xmlHttp = new XMLHttpRequest();
-			}
-			}
-			
-			
-			function startRequest_id_push(reg_id) {
-			createXMLHttpRequest_id_push();
-			xmlHttp.onreadystatechange = handleStateChange_id_push;
-			
-			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/m/app_reg_id_push_ajax.php", true);
-			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-			
-			xmlHttp.send("reg_id="+reg_id+'&id_usuario='+localStorage.id_usuario);
-			
-			alert("Chamou funcao");
-			
-			
-		
-			}
-
-			
-			function handleStateChange_id_push() {
-			if(xmlHttp.readyState == 4) {
-			if(xmlHttp.status == 200) {
-				
-				
-				//Não fazer nada
-				 
-				 alert("talvez deu certo");
-				
-			}
-			}
-			}						
-</script>	
-
-
 
     <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
         <script type="text/javascript" charset="utf-8" src="jquery_1.5.2.min.js"></script>
@@ -252,20 +116,6 @@ textarea {
 						// Your GCM push server needs to know the regID before it can push to this device
 						// here is where you might want to send it the regID for later use.
 						console.log("regID = " + e.regid);
-						
-						if( localStorage.id_dispositivo == '' ){
-						
-							localStorage.id_dispositivo = e.regid;
-							startRequest_id_push(localStorage.id_dispositivo);
-							
-							alert("Entrou no if de localstorage.id_dispositvo = vazio");
-						
-						}//fim do if
-	
-						alert("reg_id: "+e.regid);
-
-						alert("localStorage.id_dispositivo: "+localStorage.id_dispositivo);		
-						
 					}
                     break;
                     
@@ -325,12 +175,7 @@ textarea {
             }
             
 			document.addEventListener('deviceready', onDeviceReady, true);
-			
-			
-				alert("Segunda vez reg_id: "+e.regid);
 
-				alert(" Segunda vez  localStorage.id_dispositivo: "+localStorage.id_dispositivo);		
-						
 
          </script>
 
@@ -352,7 +197,6 @@ function setDefault(){
 	 }//fim do iff
 	  
 }
-
   
 </script>
 
@@ -371,7 +215,9 @@ function setDefault(){
 <div id="menu">
 
 </div>	
-	
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>	
 <script> 
     $(function(){
       $("#menu").load("menu_fixo.html"); 
@@ -421,6 +267,7 @@ function setDefault(){
 </script>
 <!-- Validação do forumlário -->
 <script type="text/javascript">
+			var xmlHttp;
 			var top_ultimo_prod;
 			
 		
@@ -521,6 +368,134 @@ $(function () {
 startRequest_mais_produtos();
 </script> 	
 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+<script>
+//Conta o clique no produto do anunciante
+			var link_vitrine = "";
+			 
+			function createXMLHttpRequest_clique_produtos() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+			
+			
+			function startRequest_clique_produtos(id) {
+			createXMLHttpRequest_clique_produtos();
+			xmlHttp.onreadystatechange = handleStateChange_clique_produtos;
+			
+			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/validar/cliques_ajax.php", true);
+			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			xmlHttp.send("id="+id+"&tipo=clique_produto");
+			
+			
+			
+			
+		
+			}
+
+			
+			function handleStateChange_clique_produtos() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+				
+				//Não fazer nada
+				
+				
+			}
+			}
+			}
+
+//Conta o visualização do produto do anunciante
+			 
+			 
+			 
+			function createXMLHttpRequest_visualizacao_produtos() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+			
+			
+			function startRequest_visualizacao_produtos(id) {
+			createXMLHttpRequest_visualizacao_produtos();
+			xmlHttp.onreadystatechange = handleStateChange_visualizacao_produtos;
+			
+			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/validar/cliques_ajax.php", true);
+			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			xmlHttp.send("id="+id+"&tipo=visualizacao_produto");
+			
+			
+			
+			
+		
+			}
+
+			
+			function handleStateChange_visualizacao_produtos() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+				
+				
+				//Não fazer nada
+				 
+				
+			}
+			}
+			}			
+
+			
+//Conta o visualização do produto do anunciante
+			 
+			 
+			 
+			function createXMLHttpRequest_id_push() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+			
+			
+			function startRequest_id_push(reg_id) {
+			createXMLHttpRequest_id_push();
+			xmlHttp.onreadystatechange = handleStateChange_id_push;
+			
+			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/m/app_reg_id_push_ajax.php", true);
+			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			xmlHttp.send("reg_id="+reg_id+'');
+			
+			
+			
+			
+		
+			}
+
+			
+			function handleStateChange_id_push() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+				
+				
+				//Não fazer nada
+				 
+				
+			}
+			}
+			}						
+</script>	
 
 
 
