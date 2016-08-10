@@ -36,3 +36,132 @@ if(nome_menu.length > 12){
 document.getElementById("nome_usuario").innerHTML = nome_menu;
 
 </script>		
+
+
+
+
+<div id="novidades">
+</div>
+
+<!-- Quando a notificação for aberta alterar a data de vizualização -->
+<script type="text/javascript">
+//Carregar Lampada de novidades
+					
+					var xmlHttp2; 
+					
+					function createXMLHttpRequest_abrir_novidades() {
+					if (window.ActiveXObject) {
+					xmlHttp2 = new ActiveXObject("Microsoft.XMLHTTP");
+					}
+					else if (window.XMLHttpRequest) {
+					xmlHttp2 = new XMLHttpRequest();
+					}
+					}
+
+					function startRequest_abrir_novidades() {
+					createXMLHttpRequest_abrir_novidades();
+					xmlHttp2.onreadystatechange = handleStateChange_abrir_novidades;
+					
+					xmlHttp2.open("POST", "http://54.207.38.125/AcheLoja2.0/validar/abrir_novidades.php", true);
+					xmlHttp2.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+					
+					xmlHttp2.send("id_usuario="+localStorage.id_usuario+"");
+					
+					
+					}
+
+					
+					function handleStateChange_abrir_novidades() {
+					if(xmlHttp2.readyState == 4) {
+					if(xmlHttp2.status == 200) {
+						
+						window.location.href = "home.html";
+						
+					
+					}
+					}
+					}		
+
+					var xmlHttp3;
+					
+					function createXMLHttpRequest_novidades() {
+					if (window.ActiveXObject) {
+					xmlHttp3 = new ActiveXObject("Microsoft.XMLHTTP");
+					}
+					else if (window.XMLHttpRequest) {
+					xmlHttp3 = new XMLHttpRequest();
+					}
+					}
+
+					function startRequest_novidades() {
+					createXMLHttpRequest_novidades();
+					xmlHttp3.onreadystatechange = handleStateChange_novidades;
+					
+					xmlHttp3.open("POST", "http://54.207.38.125/AcheLoja2.0/m/novidades_usuario.php", true);
+					xmlHttp3.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+					
+					xmlHttp3.send("id_usuario="+localStorage.id_usuario+"");
+					
+					
+					}
+
+					
+					function handleStateChange_novidades() {
+					if(xmlHttp3.readyState == 4) {
+					if(xmlHttp3.status == 200) {
+					
+						var str = xmlHttp3.responseText;
+				
+						var marcador_novidades = str.indexOf("#n");
+						
+						document.getElementById("novidades").innerHTML = document.getElementById("novidades").innerHTML + str.substring(0, marcador_novidades);;
+						
+						//var novidades = str.substring((marcador_novidades+2), str.length);
+						
+						//if(novidades != '0') document.title = "(" + novidades.trim() + ") "+document.title;
+							
+						
+					
+					}
+					}
+					}		
+
+					//Executar função para ver se tem novidades
+					startRequest_novidades();
+</script>
+
+
+
+<script type="text/javascript">
+		var aberto=0;
+		
+		function abrir_balao_notificacao(){
+			
+			if(aberto == 0){
+				document.getElementById("notificacao").style.visibility="visible";
+				aberto = 1;
+			}else{
+			
+				if(aberto == 1){
+					document.getElementById("notificacao").style.visibility="hidden";
+					aberto = 0;
+				}
+			}
+		}
+		
+</script>
+
+<script type="text/javascript">
+$(function () {
+		
+       $(window).scroll(function () {
+			//if($(window).scrollTop() + $(window).height() > $(document).height()-50000) {
+					  //alert("foi");
+					 document.getElementById("notificacao").style.visibility="hidden";
+					 aberto = 0;
+			 //}
+		});
+});
+
+
+</script>
