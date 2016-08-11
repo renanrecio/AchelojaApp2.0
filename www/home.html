@@ -522,12 +522,6 @@ $(function () {
 </script>
 
 <script>
-startRequest_mais_produtos();
-</script> 	
-
-
-<script>
-			
 					
 					function createXMLHttpRequest_visualizar_vitrine() {
 					if (window.ActiveXObject) {
@@ -561,14 +555,21 @@ startRequest_mais_produtos();
 					}
 					}		
 
-					//Atualizar data de visualização da minhas vitrines
-					startRequest_visualizar_vitrine();
+					
 
 </script>
 
 
 
+<script>
+startRequest_mais_produtos();
+</script> 	
 
+
+
+<script>
+window.onbeforeunload = startRequest_visualizar_vitrine;
+</script>
 
 <img id="img_carregando_produtos" src="fotos/carregando_produtos.gif" style="border-radius:5px; border: 0.5px dashed; visibility: hidden; width:40%; position: fixed; left:30%; top:40%;" />
   
