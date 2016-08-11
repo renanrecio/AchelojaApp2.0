@@ -49,33 +49,33 @@ document.getElementById("nome_usuario").innerHTML = nome_menu;
 <script type="text/javascript">
 //Carregar Lampada de novidades
 					
-					var xmlHttp2; 
+					var xmlHttp; 
 					
 					function createXMLHttpRequest_abrir_novidades() {
 					if (window.ActiveXObject) {
-					xmlHttp2 = new ActiveXObject("Microsoft.XMLHTTP");
+					xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
 					}
 					else if (window.XMLHttpRequest) {
-					xmlHttp2 = new XMLHttpRequest();
+					xmlHttp = new XMLHttpRequest();
 					}
 					}
 
 					function startRequest_abrir_novidades() {
 					createXMLHttpRequest_abrir_novidades();
-					xmlHttp2.onreadystatechange = handleStateChange_abrir_novidades;
+					xmlHttp.onreadystatechange = handleStateChange_abrir_novidades;
 					
-					xmlHttp2.open("POST", "http://54.207.38.125/AcheLoja2.0/validar/abrir_novidades.php", true);
-					xmlHttp2.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+					xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/validar/abrir_novidades.php", true);
+					xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 					
-					xmlHttp2.send("id_usuario="+localStorage.id_usuario+"");
+					xmlHttp.send("id_usuario="+localStorage.id_usuario+"");
 					
 					
 					}
 
 					
 					function handleStateChange_abrir_novidades() {
-					if(xmlHttp2.readyState == 4) {
-					if(xmlHttp2.status == 200) {
+					if(xmlHttp.readyState == 4) {
+					if(xmlHttp.status == 200) {
 						
 						window.location.href = "home.html";
 						
@@ -84,35 +84,34 @@ document.getElementById("nome_usuario").innerHTML = nome_menu;
 					}
 					}		
 
-					var xmlHttp3;
 					
 					function createXMLHttpRequest_novidades() {
 					if (window.ActiveXObject) {
-					xmlHttp3 = new ActiveXObject("Microsoft.XMLHTTP");
+					xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
 					}
 					else if (window.XMLHttpRequest) {
-					xmlHttp3 = new XMLHttpRequest();
+					xmlHttp = new XMLHttpRequest();
 					}
 					}
 
 					function startRequest_novidades() {
 					createXMLHttpRequest_novidades();
-					xmlHttp3.onreadystatechange = handleStateChange_novidades;
+					xmlHttp.onreadystatechange = handleStateChange_novidades;
 					
-					xmlHttp3.open("POST", "http://54.207.38.125/AcheLoja2.0/m/ajax_novidades_usuario_app.php", true);
-					xmlHttp3.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+					xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/m/ajax_novidades_usuario_app.php", true);
+					xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 					
-					xmlHttp3.send("id_usuario="+localStorage.id_usuario+"");
+					xmlHttp.send("id_usuario="+localStorage.id_usuario+"");
 					
 					
 					}
 
 					
 					function handleStateChange_novidades() {
-					if(xmlHttp3.readyState == 4) {
-					if(xmlHttp3.status == 200) {
+					if(xmlHttp.readyState == 4) {
+					if(xmlHttp.status == 200) {
 					
-						var str = xmlHttp3.responseText;
+						var str = xmlHttp.responseText;
 				
 						var marcador_novidades = str.indexOf("#n");
 						
