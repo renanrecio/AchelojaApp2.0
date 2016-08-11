@@ -326,36 +326,37 @@ function fechar(){
 			}
 			
 		
+			var xmlHttp3;
 			
 			function createXMLHttpRequest_categorias() {
 			if (window.ActiveXObject) {
-			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			xmlHttp3 = new ActiveXObject("Microsoft.XMLHTTP");
 			}
 			else if (window.XMLHttpRequest) {
-			xmlHttp = new XMLHttpRequest();
+			xmlHttp3 = new XMLHttpRequest();
 			}
 			}
 
 			function startRequest_categorias() {
 			createXMLHttpRequest_categorias();
-			xmlHttp.onreadystatechange = handleStateChange_categorias;
+			xmlHttp3.onreadystatechange = handleStateChange_categorias;
 			
 			
-			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/m/ajax_categorias_app.php", true);
-			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			xmlHttp3.open("POST", "http://54.207.38.125/AcheLoja2.0/m/ajax_categorias_app.php", true);
+			xmlHttp3.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 			
-			xmlHttp.send();
+			xmlHttp3.send();
 			
 			}
 
 			
 			function handleStateChange_categorias() {
-			if(xmlHttp.readyState == 4) {
-			if(xmlHttp.status == 200) {
+			if(xmlHttp3.readyState == 4) {
+			if(xmlHttp3.status == 200) {
 			//document.getElementById("resultado").innerHTML = xmlHttp2.responseText;
 			//document.getElementById("verifica_login").value = xmlHttp2.responseText;
 			
-				var str2 = xmlHttp.responseText;
+				var str2 = xmlHttp3.responseText;
 				
 				var str2  = str2.trim(); 
 				
@@ -614,7 +615,8 @@ function desaparecer_busca_produto(){
 	
 	}
 		
-
+	//Buscar produtos	
+	startRequest_mais_produtos();
 	
 	
 	//Carregar categorias
@@ -622,8 +624,7 @@ function desaparecer_busca_produto(){
 	
 	
 
-	//Buscar produtos	
-	startRequest_mais_produtos();
+	
 </script> 
   
   
