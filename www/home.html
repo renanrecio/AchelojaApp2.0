@@ -526,6 +526,47 @@ startRequest_mais_produtos();
 </script> 	
 
 
+<script>
+			
+					
+					function createXMLHttpRequest_visualizar_vitrine() {
+					if (window.ActiveXObject) {
+					xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+					}
+					else if (window.XMLHttpRequest) {
+					xmlHttp = new XMLHttpRequest();
+					}
+					}
+
+					function startRequest_visualizar_vitrine() {
+					createXMLHttpRequest_visualizar_vitrine();
+					xmlHttp.onreadystatechange = handleStateChange_visualizar_vitrine;
+					
+					xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/validar/atualizar_visualizacao_minhas_vitrine.php", true);
+					xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+					
+					xmlHttp.send("id_usuario="+localStorage.id_usuario+"");
+					
+					
+					}
+
+					
+					function handleStateChange_visualizar_vitrine() {
+					if(xmlHttp.readyState == 4) {
+					if(xmlHttp.status == 200) {
+						
+						//não fazer nada
+					
+					}
+					}
+					}		
+
+					//Atualizar data de visualização da minhas vitrines
+					startRequest_visualizar_vitrine();
+
+</script>
+
+
 
 
 
