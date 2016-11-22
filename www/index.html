@@ -85,6 +85,62 @@ startRequest_login();
 <!-- Verificar se já está logado-->
 <script>
 
+//Deslogar reg ID
+			 var xmlHttp;
+			 
+			 
+			function createXMLHttpRequest_id_push_deslogar() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+			
+			
+			function startRequest_id_push_deslogar(){
+			createXMLHttpRequest_id_push_deslogar();
+			xmlHttp.onreadystatechange = handleStateChange_id_push_deslogar;
+			
+			
+			if( (localStorage.id_dispositivo != '') && (typeof localStorage.id_dispositivo !== "undefined") ){
+			
+				var regid = localStorage.id_dispositivo;
+				
+				regid = reg_id.trim();
+				
+				regid = regid.replace(" ", "");
+				
+			
+			
+				xmlHttp.open("POST", "http://54.207.38.125/AcheLoja3.0/m/app_deslogar_reg_id_push_ajax.php", true);
+				xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+				
+				xmlHttp.send("reg_id="+regid+"&id_usuario="+localStorage.id_usuario);
+				
+			
+		
+			}
+
+			
+			function handleStateChange_id_push_deslogar() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+				
+				
+				//Não fazer nada
+				
+				
+			}
+			}
+			}			
+
+			
+			startRequest_id_push_deslogar();
+</script>	
+<script>
+
 var nome_usuario_guardado = localStorage.nome_usuario;
 
 if( (nome_usuario_guardado != '') && (typeof nome_usuario_guardado !== "undefined") ){
@@ -97,6 +153,7 @@ if( (nome_usuario_guardado != '') && (typeof nome_usuario_guardado !== "undefine
 	localStorage.id_dispositivo = '';
 	localStorage.cep_bairro = '';
 	localStorage.cidade = '';
+	localStorage.id_usuario = '';
 
 }
 
@@ -146,7 +203,7 @@ if( (nome_usuario_guardado != '') && (typeof nome_usuario_guardado !== "undefine
 
 <!-- Validação do forumlário -->
 <script type="text/javascript">
-			var xmlHttp;
+			
 
 			function createXMLHttpRequest_login() {
 			if (window.ActiveXObject) {
@@ -239,6 +296,57 @@ if( (nome_usuario_guardado != '') && (typeof nome_usuario_guardado !== "undefine
 			
 			
 </script>    		
+
+<script>
+
+//Deslogar reg ID
+			 
+			 
+			 
+			function createXMLHttpRequest_id_push_deslogar() {
+			if (window.ActiveXObject) {
+			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			else if (window.XMLHttpRequest) {
+			xmlHttp = new XMLHttpRequest();
+			}
+			}
+			
+			
+			function startRequest_id_push_deslogar(reg_id) {
+			createXMLHttpRequest_id_push_deslogar();
+			xmlHttp.onreadystatechange = handleStateChange_id_push_deslogar;
+			
+			
+			var regid = reg_id.trim();
+			
+			regid = regid.replace(" ", "");
+			
+			localStorage.id_dispositivo = regid;
+			
+			
+			xmlHttp.open("POST", "http://54.207.38.125/AcheLoja2.0/m/app_deslogar_reg_id_push_ajax.php", true);
+			xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			
+			xmlHttp.send("reg_id="+regid+"&id_usuario="+localStorage.id_usuario);
+			
+			
+		
+			}
+
+			
+			function handleStateChange_id_push_deslogar() {
+			if(xmlHttp.readyState == 4) {
+			if(xmlHttp.status == 200) {
+				
+				
+				//Não fazer nada
+				
+				
+			}
+			}
+			}						
+</script>	
 		
 
 

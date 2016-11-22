@@ -1,4 +1,4 @@
-ï»¿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 
@@ -6,12 +6,12 @@
 
 <meta name="google-site-verification" content="Wiq9h-MVFjBO3hYHciruU4k0Wk08XVFGfFgvRQi_YPM" />
 
-<meta name="Keywords" content="publicar, publicar do brasil, listaonline, lista online, guia, guia de lojas, empresa, acheloja.com, lojas, loja, lista, busca de lojas, busca de produtos, guia local, busca local, consulta serviÃ§os produtos, lista telefonica, telefones, endereÃ§os." />
+<meta name="Keywords" content="publicar, publicar do brasil, listaonline, lista online, guia, guia de lojas, empresa, acheloja.com, lojas, loja, lista, busca de lojas, busca de produtos, guia local, busca local, consulta serviços produtos, lista telefonica, telefones, endereços." />
 
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 
 
-<meta name="description" content="VocÃª escolhe o que quer comprar e onde, e o acheloja.com acha o estabelecimento mais prÃ³ximo de vocÃª!">
+<meta name="description" content="Você escolhe o que quer comprar e onde, e o acheloja.com acha o estabelecimento mais próximo de você!">
 
 
 <link rel="stylesheet" type="text/css" href="Folha_Estilo.css" media="screen" />
@@ -83,8 +83,8 @@
  
  <script>
 <?php 
- ///Essa funÃ§Ã£o foi feita caso o usuario escolher uma Vitrine Virtual e resolver voltar dai temos que resetar a variaves JavaScript para chamar o ajax e colocar os produtos na posiÃ§Ã£o cert
- //antes ele mantinha as posiÃ§Ãµes atÃ© onde foi aberto os produtos e quando voltava ficava um pedaÃ§o em branco no meio da tele entre os produtos
+ ///Essa função foi feita caso o usuario escolher uma Vitrine Virtual e resolver voltar dai temos que resetar a variaves JavaScript para chamar o ajax e colocar os produtos na posição cert
+ //antes ele mantinha as posições até onde foi aberto os produtos e quando voltava ficava um pedaço em branco no meio da tele entre os produtos
 ?>
 function setDefault(){
 	  
@@ -200,7 +200,7 @@ function fechar(){
 
 
 	
-<!-- ValidaÃ§Ã£o do forumlÃ¡rio -->
+<!-- Validação do forumlário -->
 <script type="text/javascript">
 			var xmlHttp;
 			var top_ultimo_prod;
@@ -241,11 +241,11 @@ function fechar(){
 				
 			}else{
 			
-				cidade = 'SÃ£o Paulo';
+				cidade = 'São Paulo';
 			
 			}
 			
-			//Verificar quais categorias estÃ£o selecionada
+			//Verificar quais categorias estão selecionada
 			
 			categorias = "and ( 0 ";
 			
@@ -274,8 +274,8 @@ function fechar(){
 			
 			xmlHttp.send("contador_geral=" + document.getElementById("contador_geral").value  + "&contador_geral_prod1=" + document.getElementById("contador_geral_prod1").value  + "&contador_geral_prod2=" + document.getElementById("contador_geral_prod2").value  + "&contador=" + document.getElementById("contador").value + "&top=" + document.getElementById("top").value + "&left=" + document.getElementById("left").value + "&categorias="+categorias+"&cep_bairro=" + cep_bairro + "&cidade=" + cidade + "&tem_loja_na_cidade=1");
 			
-			//xmlHttp.send("contador_geral=" + document.getElementById("contador_geral").value  + "&contador_geral_prod1=" + document.getElementById("contador_geral_prod1").value  + "&contador_geral_prod2=" + document.getElementById("contador_geral_prod2").value  + "&contador=" + document.getElementById("contador").value + "&top=" + document.getElementById("top").value + "&left=" + document.getElementById("left").value + "&categorias= and ( 0 or categoria like 'Roupas'  or categoria like 'CalÃ§ados'  or categoria like 'AcessÃ³rios'  or categoria like 'Info e Eletro'  or categoria like 'EstÃ©tica e SaÃºde'  or categoria like 'Outros'  )&cep_bairro=" + localStorage.cep_bairro + "&cidade=" + localStorage.cidade + "&tem_loja_na_cidade=1");
-			//xmlHttp.send("contador_geral=" + document.getElementById("contador_geral").value  + "&contador_geral_prod1=" + document.getElementById("contador_geral_prod1").value  + "&contador_geral_prod2=" + document.getElementById("contador_geral_prod2").value  + "&contador=" + document.getElementById("contador").value + "&top=" + document.getElementById("top").value + "&left=" + document.getElementById("left").value + "&categorias= and ( 0 or categoria like 'Roupas'  or categoria like 'CalÃ§ados'  or categoria like 'AcessÃ³rios'  or categoria like 'Info e Eletro'  or categoria like 'EstÃ©tica e SaÃºde'  or categoria like 'Outros'  )&cep_bairro=04297000&cidade=SÃ£o Paulo&tem_loja_na_cidade=1");
+			//xmlHttp.send("contador_geral=" + document.getElementById("contador_geral").value  + "&contador_geral_prod1=" + document.getElementById("contador_geral_prod1").value  + "&contador_geral_prod2=" + document.getElementById("contador_geral_prod2").value  + "&contador=" + document.getElementById("contador").value + "&top=" + document.getElementById("top").value + "&left=" + document.getElementById("left").value + "&categorias= and ( 0 or categoria like 'Roupas'  or categoria like 'Calçados'  or categoria like 'Acessórios'  or categoria like 'Info e Eletro'  or categoria like 'Estética e Saúde'  or categoria like 'Outros'  )&cep_bairro=" + localStorage.cep_bairro + "&cidade=" + localStorage.cidade + "&tem_loja_na_cidade=1");
+			//xmlHttp.send("contador_geral=" + document.getElementById("contador_geral").value  + "&contador_geral_prod1=" + document.getElementById("contador_geral_prod1").value  + "&contador_geral_prod2=" + document.getElementById("contador_geral_prod2").value  + "&contador=" + document.getElementById("contador").value + "&top=" + document.getElementById("top").value + "&left=" + document.getElementById("left").value + "&categorias= and ( 0 or categoria like 'Roupas'  or categoria like 'Calçados'  or categoria like 'Acessórios'  or categoria like 'Info e Eletro'  or categoria like 'Estética e Saúde'  or categoria like 'Outros'  )&cep_bairro=04297000&cidade=São Paulo&tem_loja_na_cidade=1");
 			
 			
 			
@@ -564,15 +564,10 @@ function desaparecer_busca_produto(){
 </div>
 
 
-<!--
 <div id="busca_produto" style="visibility: hidden;">
-<div id="categorias_produtos" ></div>
-</div>		
 
--->
 
-<div id="busca_produto" style="visibility: hidden;">
-<img src="" width="100%" style="position:fixed; background-color: #0054a6; top:3em; left:0%; height: 15em; opacity:0.90; filter:alpha(opacity=90);" /> 
+<img src="" width="100%" style="position:fixed; background-color: #0054a6; top:3em; left:0%; height: 13em; opacity:0.90; filter:alpha(opacity=90);" /> 
 				
 		<p style="position: fixed; top:3.7em; left: 10%; color:white; font-weight: bold; font-size:0.9em;" >Ache perto do:</p>
 		<input id="cep_bairro" name="cep_bairro" type="text" style="position: fixed; top:5.5em; height:1.2em; width:50%; left: 10%; font-weight: bold;font-size:16px; "  onkeypress="return Se_apertar_enter(event)" onclick = "clicar_input();"  placeholder="CEP ou Bairro" />
@@ -583,9 +578,9 @@ function desaparecer_busca_produto(){
 		
 		<div id="categorias_produtos" style="position:fixed; left:10%; top:8.5em; height:60%; width:100%;" ></div>
 		
-		<!--
-		<input onclick="filtrar()" type="submit" style="position: fixed; top:15.5em; height:2em; width:20%; left: 40%; font-weight: bold; color:white; background-color: #0054a6; font-size:1em; cursor: pointer; border-radius: 5px;" Value="Achar"/>
-		-->
+		
+		<input onclick="filtrar()" type="submit" style="position: fixed; top:13.5em; height:2em; width:20%; left: 40%; font-weight: bold; color:white; background-color: #0054a6; font-size:1em; cursor: pointer; border-radius: 5px;" Value="Achar"/>
+			
 </div>
  
  
@@ -600,7 +595,7 @@ function desaparecer_busca_produto(){
 
 	if( (typeof localStorage.cidade === "undefined") || (localStorage.cidade == '') ){
 	
-		document.getElementById("cidade").value = 'SÃ£o Paulo';
+		document.getElementById("cidade").value = 'São Paulo';
 	
 	}else{
 	
